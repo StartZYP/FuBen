@@ -3,8 +3,9 @@ package com.ipedg.minecraft;
 
 import com.ipedg.minecraft.config.FubenConfig;
 import com.ipedg.minecraft.entity.FubenEntity;
-import com.ipedg.minecraft.worldmanger.DropFubenThread;
-import com.ipedg.minecraft.worldmanger.FubenInitThread;
+import com.ipedg.minecraft.entity.MenuEntity;
+import com.ipedg.minecraft.entity.PlayerEntity;
+import com.ipedg.minecraft.event.PlayerEevent;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -13,6 +14,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -20,9 +22,10 @@ import java.util.HashMap;
 public class Fuben extends JavaPlugin {
     public static Plugin plugin;
     public static ArrayList<FubenEntity> fuben = new ArrayList<>();
-    public static HashMap<String,ArrayList<String>> menu = new HashMap<>();
+    public static ArrayList<MenuEntity> menu = new ArrayList<>();
     public static HashMap<String, Inventory> menuall = new HashMap<>();
-
+    public static HashMap<String, PlayerEntity> fubenplayer = new HashMap<>();
+    public static String CHEACKKEY="Fuben";
     @Override
     public void onEnable() {
         plugin = this;
@@ -36,6 +39,7 @@ public class Fuben extends JavaPlugin {
         }
         saveDefaultConfig();
         FubenConfig.ConfigLoad();
+        Bukkit.getServer().getPluginManager().registerEvents(new PlayerEevent(),this);
         super.onEnable();
     }
 
@@ -45,7 +49,7 @@ public class Fuben extends JavaPlugin {
             if (args[0].equalsIgnoreCase("reload")){
                 FubenConfig.ConfigLoad();
                 sender.sendMessage("§e§l插件重载成功");
-            }else if (Fuben.menu.containsKey(args[0])){
+            }else if (Fuben.menu.contains(new MenuEntity(args[0]))){
                 Player sender1 = (Player) sender;
                 sender1.openInventory(Fuben.menuall.get(args[0]));
             }

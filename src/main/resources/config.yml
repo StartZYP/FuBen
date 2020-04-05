@@ -1,8 +1,8 @@
 Fuben:
   Fuben1:
-    Itemid: 32
-    Child: 0
-    Name: "副本4"
+    Itemid: 31
+    Child: 2
+    Name: "§e§l南华山副本"
     Lores:
       - "gaga"
       - "asdweqd"
@@ -14,9 +14,9 @@ Fuben:
     RestartMoney: 5000
     RestartCount: 3
   Fuben2:
-    Itemid: 35
-    Child: 0
-    Name: "副本3"
+    Itemid: 31
+    Child: 2
+    Name: "§a§l青山道副本"
     Lores:
       - "gaga"
       - "asdweqd"
@@ -28,9 +28,23 @@ Fuben:
     RestartMoney: 5000
     RestartCount: 3
   Fuben3:
-    Itemid: 36
+    Itemid: 31
+    Child: 2
+    Name: "§c§l彩虹山副本"
+    Lores:
+      - "彩虹山副本"
+      - "asdweqd"
+      - "fuck"
+    NeedMoney: 5000
+    NeedItemLore: "深渊门票1"
+    MaxLevel: 50
+    MinLevel: 20
+    RestartMoney: 5000
+    RestartCount: 3
+  Fuben4:
+    Itemid: 28
     Child: 0
-    Name: "副本3"
+    Name: "§e§l狗狗洞副本"
     Lores:
       - "gaga"
       - "asdweqd"
@@ -43,10 +57,15 @@ Fuben:
     RestartCount: 3
 FubenMenu:
   CaiDan1:
-    - "Fuben1"
-    - "fuben2"
+    Name: "§e§l异步活动世界"
+    MenuList:
+      - "Fuben1"
+      - "Fuben2"
+      - "Fuben3"
   CaiDan2:
-    - "Fuben3"
-    - "Fuben4"
+    Name: "§e§l飞行地下城"
+    MenuList:
+      - "Fuben3"
+      - "Fuben4"
 
 GlobalRestartCd: 10
