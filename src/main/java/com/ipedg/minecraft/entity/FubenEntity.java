@@ -17,6 +17,11 @@ public class FubenEntity {
     private int RestartMoney;
     private int RestartCount;
 
+
+    public FubenEntity(String fubenWorldName) {
+        FubenWorldName = fubenWorldName;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -2,21 +2,16 @@ package com.ipedg.minecraft.config;
 
 import com.ipedg.minecraft.Fuben;
 import com.ipedg.minecraft.entity.FubenEntity;
+import com.ipedg.minecraft.view.FubenMenu;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Set;
 
 public class FubenConfig {
+    public static int GlobalRestartCd;
+
     public static void ConfigLoad(){
-        File config = new File(Fuben.plugin.getDataFolder() + File.separator + "config.yml");
-        if (!config.exists()) {
-            Fuben.plugin.getConfig().options().copyDefaults(true);
-        }
-        File FubenFile = new File(Fuben.plugin.getDataFolder()+File.separator+"FubenFile");
-        if (!FubenFile.exists()){
-            FubenFile.mkdir();
-        }
         Fuben.fuben.clear();
         Set<String> mines = Fuben.plugin.getConfig().getConfigurationSection("Fuben").getKeys(false);
         for (String temp:mines){
@@ -34,5 +29,15 @@ public class FubenConfig {
             System.out.println(fubenEntity);
             Fuben.fuben.add(fubenEntity);
         }
+        Fuben.menu.clear();
+        Set<String> menutmps = Fuben.plugin.getConfig().getConfigurationSection("FubenMenu").getKeys(false);
+        for (String menu:menutmps){
+            ArrayList<String> stringList = (ArrayList<String>)Fuben.plugin.getConfig().getStringList("FubenMenu." + menu);
+            System.out.println(stringList);
+            System.out.println(menu);
+            Fuben.menu.put(menu,stringList);
+        }
+        GlobalRestartCd = Fuben.plugin.getConfig().getInt("GlobalRestartCd");
+        FubenMenu.InitInventorymenu();
     }
 }
