@@ -1,0 +1,52 @@
+Fuben:
+  Fuben1:
+    Itemid: 32
+    Child: 0
+    Name: "副本4"
+    Lores:
+      - "gaga"
+      - "asdweqd"
+      - "fuck"
+    NeedMoney: 500
+    NeedItemLore: "深渊门票"
+    MaxLevel: 50
+    MinLevel: 20
+    RestartMoney: 5000
+    RestartCount: 3
+  Fuben2:
+    Itemid: 35
+    Child: 0
+    Name: "副本3"
+    Lores:
+      - "gaga"
+      - "asdweqd"
+      - "fuck"
+    NeedMoney: 5000
+    NeedItemLore: "深渊门票1"
+    MaxLevel: 50
+    MinLevel: 20
+    RestartMoney: 5000
+    RestartCount: 3
+  Fuben3:
+    Itemid: 36
+    Child: 0
+    Name: "副本3"
+    Lores:
+      - "gaga"
+      - "asdweqd"
+      - "fuck"
+    NeedMoney: 5000
+    NeedItemLore: "深渊门票1"
+    MaxLevel: 50
+    MinLevel: 20
+    RestartMoney: 5000
+    RestartCount: 3
+FubenMenu:
+  CaiDan1:
+    - "Fuben1"
+    - "fuben2"
+  CaiDan2:
+    - "Fuben3"
+    - "Fuben4"
+
+GlobalRestartCd: 10
