@@ -1,6 +1,10 @@
 package com.ipedg.minecraft.event;
 
 import com.ipedg.minecraft.Fuben;
+import com.ipedg.minecraft.Utils.FubenUtil;
+import com.ipedg.minecraft.config.FubenConfig;
+import com.ipedg.minecraft.economy.VaultUtil;
+import com.ipedg.minecraft.entity.FubenEntity;
 import com.ipedg.minecraft.entity.PlayerEntity;
 import net.minecraft.server.v1_7_R4.NBTTagCompound;
 import net.minecraftforge.cauldron.entity.CraftCustomEntity;
@@ -32,7 +36,14 @@ public class PlayerEevent implements Listener {
             int slot = event.getSlot();
             ItemStack clickitem= inventory.getItem(slot);
             event.setCancelled(true);
-            if (ItemGetNbtTagKey(clickitem)!=null){
+            String FubenName = ItemGetNbtTagKey(clickitem);
+            if (FubenName!=null){
+                Player p = (Player) event.getWhoClicked();
+                FubenEntity fubenEntity = Fuben.fuben.get(FubenName.indexOf(FubenName));
+                if (CheackEnterFueb(p,fubenEntity)){
+
+                }
+
                 //todo 创建世界后加进倒计时队列
             }
         }
@@ -89,6 +100,28 @@ public class PlayerEevent implements Listener {
     }
 
 
+    public static boolean CheackEnterFueb(Player player,FubenEntity fubenEntity){
+        int MaxLevel = fubenEntity.getMaxLevel();
+        int MinLevel = fubenEntity.getMinLevel();
+        if (MaxLevel!=0||MinLevel!=0){
+            if (!FubenUtil.CheackLevl(player.getLevel(),MinLevel,MaxLevel)){
+                player.sendMessage(FubenConfig.LevellimitMsg);
+                return false;
+            }
+        }
+        if (fubenEntity.getFubenNeedMoney()!=0){
+            if (!VaultUtil.pay(player.getUniqueId(),fubenEntity.getFubenNeedMoney())){
+                player.sendMessage(FubenConfig.NoMoneyMsg);
+                return false;
+            }
+        }
+        if (!fubenEntity.getNeedItemLore().equals("")){
+            //todo遍历背包
+        }
+
+
+        return true;
+    }
 
 
     public static String ItemGetNbtTagKey(ItemStack item)

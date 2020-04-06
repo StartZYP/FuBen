@@ -67,6 +67,7 @@ FubenMenu:
     MenuList:
       - "Fuben3"
       - "Fuben4"
-
+LevellimitMsg: "§e§l等级不符合"
 GlobalRestartCd: 10
 RestartTitle: "§e§l十秒内请选择是否重生"
+NoMoneyMsg: "§e§l没得鸡儿钱啊"

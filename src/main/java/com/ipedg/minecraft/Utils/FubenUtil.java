@@ -51,6 +51,10 @@ public class FubenUtil {
         }
     }
 
+    public static boolean CheackLevl(int PlayerLevel,int MinLevel,int MaxLevel){
+        return PlayerLevel<MaxLevel&&PlayerLevel>=MinLevel;
+    }
+
 
     public static void GoFuben(String PlayerName,String FubenFileName){
         Bukkit.getScheduler().runTask(Fuben.plugin,new FubenInitThread(PlayerName,FubenFileName));

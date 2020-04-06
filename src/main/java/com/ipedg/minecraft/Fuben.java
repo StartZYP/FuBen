@@ -2,12 +2,11 @@ package com.ipedg.minecraft;
 
 
 import com.ipedg.minecraft.config.FubenConfig;
+import com.ipedg.minecraft.economy.VaultUtil;
 import com.ipedg.minecraft.entity.FubenEntity;
 import com.ipedg.minecraft.entity.MenuEntity;
 import com.ipedg.minecraft.entity.PlayerEntity;
 import com.ipedg.minecraft.event.PlayerEevent;
-import com.ipedg.minecraft.worldmanger.DropFubenThread;
-import com.ipedg.minecraft.worldmanger.FubenInitThread;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -15,7 +14,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.scheduler.BukkitRunnable;
 
 
 import java.io.File;
@@ -43,6 +41,11 @@ public class Fuben extends JavaPlugin {
         saveDefaultConfig();
         FubenConfig.ConfigLoad();
         Bukkit.getServer().getPluginManager().registerEvents(new PlayerEevent(),this);
+        if (VaultUtil.setupEconomy()){
+            System.out.println("[Fuben]Vault初始化成功");
+        }else {
+            System.out.println("[Fuben]Vault初始化失败");
+        }
         super.onEnable();
     }
 
