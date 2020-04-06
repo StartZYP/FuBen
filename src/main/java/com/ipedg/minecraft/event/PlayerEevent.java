@@ -56,7 +56,7 @@ public class PlayerEevent implements Listener {
             Player entity = (Player) event.getEntity();
             if (entity.getWorld().getName().contains(Fuben.CHEACKKEY)){
                 //todo 加进复活CD队列
-                
+
             }
         }
     }

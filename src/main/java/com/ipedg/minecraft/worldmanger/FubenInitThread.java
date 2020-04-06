@@ -9,9 +9,11 @@ import java.io.File;
 
 public class FubenInitThread implements Runnable {
     private String FubenName;
+    private String playerName;
 
-    public FubenInitThread(String FubenName){
+    public FubenInitThread(String playerName,String FubenName){
         this.FubenName = FubenName;
+        this.playerName = playerName;
     }
 
 
@@ -22,5 +24,6 @@ public class FubenInitThread implements Runnable {
         FubenUtil.copyFolder(fubenFILE,wordfile);
         Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(),"mv import "+FubenName + " normal");
         Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(),"mv load "+FubenName);
+        Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(),"mv tp "+playerName+" "+FubenName);
     }
 }

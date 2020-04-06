@@ -69,3 +69,4 @@ FubenMenu:
       - "Fuben4"
 
 GlobalRestartCd: 10
+RestartTitle: "§e§l十秒内请选择是否重生"

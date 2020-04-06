@@ -1,9 +1,9 @@
 name: Fuben
 main: com.ipedg.minecraft.Fuben
 version: 1.0.0
-depend: [Multiverse-Core]
+depend: [Vault,Multiverse-Core]
 commands:
   fuben:
     description: Main command for fuben.
-    usage: /<command> (Startup error)
+    usage: /<command> (用法不对)
     aliases: [fb]

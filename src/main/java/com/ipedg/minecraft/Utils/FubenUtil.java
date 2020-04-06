@@ -1,6 +1,11 @@
 package com.ipedg.minecraft.Utils;
 
 
+import com.ipedg.minecraft.Fuben;
+import com.ipedg.minecraft.worldmanger.DropFubenThread;
+import com.ipedg.minecraft.worldmanger.FubenInitThread;
+import org.bukkit.Bukkit;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -44,5 +49,15 @@ public class FubenUtil {
                 e.printStackTrace();
             }
         }
+    }
+
+
+    public static void GoFuben(String PlayerName,String FubenFileName){
+        Bukkit.getScheduler().runTask(Fuben.plugin,new FubenInitThread(PlayerName,FubenFileName));
+    }
+
+    public static void GoBack(String PlayerName,String FubenFileName){
+        Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(),"mv tp "+PlayerName+" world");
+        Bukkit.getScheduler().runTask(Fuben.plugin,new DropFubenThread(FubenFileName));
     }
 }

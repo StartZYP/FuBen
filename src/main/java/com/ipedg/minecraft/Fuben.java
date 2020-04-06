@@ -6,6 +6,8 @@ import com.ipedg.minecraft.entity.FubenEntity;
 import com.ipedg.minecraft.entity.MenuEntity;
 import com.ipedg.minecraft.entity.PlayerEntity;
 import com.ipedg.minecraft.event.PlayerEevent;
+import com.ipedg.minecraft.worldmanger.DropFubenThread;
+import com.ipedg.minecraft.worldmanger.FubenInitThread;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -13,6 +15,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scheduler.BukkitRunnable;
 
 
 import java.io.File;
@@ -33,7 +36,7 @@ public class Fuben extends JavaPlugin {
         if (!config.exists()) {
             getConfig().options().copyDefaults(true);
         }
-        File FubenFile = new File(getDataFolder()+File.separator+"FubenFile");
+        File FubenFile = new File("plugins/Fuben/FubenFile");
         if (!FubenFile.exists()){
             FubenFile.mkdir();
         }
@@ -52,10 +55,11 @@ public class Fuben extends JavaPlugin {
             }else if (Fuben.menu.contains(new MenuEntity(args[0]))){
                 Player sender1 = (Player) sender;
                 sender1.openInventory(Fuben.menuall.get(args[0]));
+
+
             }
-            //Bukkit.getScheduler().runTask(this,new FubenInitThread("test1"));
         }else if (args.length==2){
-            //Bukkit.getScheduler().runTask(this,new DropFubenThread("test1"));
+
         }
         return super.onCommand(sender, command, label, args);
     }

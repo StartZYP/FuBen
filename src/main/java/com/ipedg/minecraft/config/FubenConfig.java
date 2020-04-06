@@ -10,6 +10,7 @@ import java.util.Set;
 
 public class FubenConfig {
     public static int GlobalRestartCd;
+    public static String RestartTitle;
 
     public static void ConfigLoad(){
         Fuben.fuben.clear();
@@ -39,6 +40,7 @@ public class FubenConfig {
             Fuben.menu.add(new MenuEntity(menuname,stringList,menu));
         }
         GlobalRestartCd = Fuben.plugin.getConfig().getInt("GlobalRestartCd");
+        RestartTitle = Fuben.plugin.getConfig().getString("RestartTitle");
         FubenMenu.InitInventorymenu();
     }
 }
