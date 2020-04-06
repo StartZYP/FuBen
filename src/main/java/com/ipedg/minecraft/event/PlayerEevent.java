@@ -116,7 +116,7 @@ public class PlayerEevent implements Listener {
             }
         }
         if (!fubenEntity.getNeedItemLore().equals("")){
-            //todo遍历背包
+            //todo遍历背
         }
 
 
