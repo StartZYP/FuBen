@@ -2,21 +2,39 @@ package com.ipedg.minecraft.entity;
 
 public class PlayerEntity {
     private String PlayerName;
-    private String PlayerStats;
-    private boolean IsDeath;
     private FubenEntity fuben;
     private String WorldName;
+    private long quittime = 0;
+    private int nowRestartCount = 0;
+    private int Status = 0;
 
+
+    public int getStatus() {
+        return Status;
+    }
+
+    public void setStatus(int status) {
+        Status = status;
+    }
 
     @Override
     public String toString() {
         return "PlayerEntity{" +
                 "PlayerName='" + PlayerName + '\'' +
-                ", PlayerStats='" + PlayerStats + '\'' +
-                ", IsDeath=" + IsDeath +
                 ", fuben=" + fuben +
                 ", WorldName='" + WorldName + '\'' +
+                ", quittime=" + quittime +
+                ", nowRestartCount=" + nowRestartCount +
+                ", Status=" + Status +
                 '}';
+    }
+
+    public long getQuittime() {
+        return quittime;
+    }
+
+    public void setQuittime(long quittime) {
+        this.quittime = quittime;
     }
 
     public String getPlayerName() {
@@ -25,22 +43,6 @@ public class PlayerEntity {
 
     public void setPlayerName(String playerName) {
         PlayerName = playerName;
-    }
-
-    public String getPlayerStats() {
-        return PlayerStats;
-    }
-
-    public void setPlayerStats(String playerStats) {
-        PlayerStats = playerStats;
-    }
-
-    public boolean isDeath() {
-        return IsDeath;
-    }
-
-    public void setDeath(boolean death) {
-        IsDeath = death;
     }
 
     public FubenEntity getFuben() {
@@ -59,11 +61,18 @@ public class PlayerEntity {
         WorldName = worldName;
     }
 
-    public PlayerEntity(String playerName, String playerStats, boolean isDeath, FubenEntity fuben, String worldName) {
+    public int getNowRestartCount() {
+        return nowRestartCount;
+    }
+
+    public void setNowRestartCount(int nowRestartCount) {
+        this.nowRestartCount = nowRestartCount;
+    }
+
+    public PlayerEntity(String playerName, FubenEntity fuben, String worldName) {
         PlayerName = playerName;
-        PlayerStats = playerStats;
-        IsDeath = isDeath;
         this.fuben = fuben;
         WorldName = worldName;
     }
+
 }

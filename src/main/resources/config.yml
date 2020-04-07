@@ -2,29 +2,38 @@ Fuben:
   Fuben1:
     Itemid: 31
     Child: 2
-    Name: "§e§l南华山副本"
+    Name: "§e§l南门华山副本"
     Lores:
-      - "gaga"
-      - "asdweqd"
-      - "fuck"
+      - "§e§l副本门票如下:"
+      - "§b§l- 金币:500"
+      - "§b§l- 物品:南门钥匙"
+      - "§e§l副本信息如下:"
+      - "§2§l- 重生:5000"
+      - "§2§l- 重生上限:3"
+      - "§3§l- 最大等级:50"
+      - "§3§l- 最小等级:40"
     NeedMoney: 500
-    NeedItemLore: "深渊门票"
+    NeedItemLore: "南门"
     MaxLevel: 50
-    MinLevel: 20
+    MinLevel: 40
     RestartMoney: 5000
     RestartCount: 3
   Fuben2:
     Itemid: 31
     Child: 2
-    Name: "§a§l青山道副本"
+    Name: "§a§l小青山道副本"
     Lores:
-      - "gaga"
-      - "asdweqd"
-      - "fuck"
-    NeedMoney: 5000
-    NeedItemLore: "深渊门票1"
-    MaxLevel: 50
-    MinLevel: 20
+      - "§e§l副本门票如下:"
+      - "§b§l- 无"
+      - "§e§l副本信息如下:"
+      - "§2§l- 重生:500"
+      - "§2§l- 重生上限:无限"
+      - "§3§l- 最大等级:10"
+      - "§3§l- 最小等级:0"
+    NeedMoney: 0
+    NeedItemLore: ""
+    MaxLevel: 10
+    MinLevel: 0
     RestartMoney: 5000
     RestartCount: 3
   Fuben3:
@@ -67,7 +76,19 @@ FubenMenu:
     MenuList:
       - "Fuben3"
       - "Fuben4"
+FubenConfig:
+  MainWorld: "world"
+  GlobalRestartCd: 10
+  BossNameKey: "666"
+  completecmd:
+    - "bc 这是第一条命令"
+    - "bc 这是第二条命令"
 LevellimitMsg: "§e§l等级不符合"
-GlobalRestartCd: 10
 RestartTitle: "§e§l十秒内请选择是否重生"
 NoMoneyMsg: "§e§l没得鸡儿钱啊"
+AntiQuickClickMsg: "§e§l咋点这么快想重复进本？"
+NoItemMsg: "§e§l你物品带的不齐全啊"
+DeathMsg: "§e§l请注意你已经死了{Count}次。"
+RestartOkMsg: "§c§l氪金复活成功"
+DeathGoBackMsg: "§e§c死亡次数耗尽，滚回主世界"
+GobackPickMsg: "§e§l赶快捡东西，你有十秒钟的时间"

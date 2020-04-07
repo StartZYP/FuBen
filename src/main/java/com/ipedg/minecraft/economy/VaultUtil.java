@@ -24,6 +24,11 @@ public class VaultUtil {
         return economy.depositPlayer(offplayer,price).transactionSuccess();
     }
 
+    public static double seemoney(UUID PlayerUUid){
+        OfflinePlayer offplayer = Bukkit.getOfflinePlayer(PlayerUUid);
+        return economy.getBalance(offplayer);
+    }
+
     public static boolean pay(UUID PlayerUUid, double price) {
         OfflinePlayer offplayer = Bukkit.getOfflinePlayer(PlayerUUid);
         return economy.has(offplayer,price)&&economy.withdrawPlayer(offplayer,price).transactionSuccess();

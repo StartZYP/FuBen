@@ -12,7 +12,6 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -26,7 +25,7 @@ public class FubenMenu {
         }
     }
     public static Inventory CreateFubenInventory(String Title,ArrayList<String> Fubenname){
-        Inventory inventory = Bukkit.createInventory(null, 27, Title);
+        Inventory inventory = Bukkit.createInventory(null, 27, Title+Fuben.CHEACKKEY);
         ArrayList<FubenEntity> tmpfb = new ArrayList<>();
         for (String fuben:Fubenname){
             tmpfb.add(new FubenEntity(fuben));
@@ -49,16 +48,16 @@ public class FubenMenu {
 
     public static Inventory CreateRestartInventory(int FubenMoney){
         Inventory inventory = Bukkit.createInventory(null, 9, FubenConfig.RestartTitle);
-        ItemStack moneybutton = itemStackinitmoney("我要复活", (ArrayList<String>) Arrays.asList("adas", "sadas", "FuckU"), 31, 2, FubenMoney);
+        ItemStack moneybutton = itemStackinitmoney("我要复活", new ArrayList<>(), 31, 2, FubenMoney);
         inventory.setItem(2,moneybutton);
-        ItemStack norestart = itemStackinit("不复活", (ArrayList<String>) Arrays.asList("adas", "sadas", "FuckU"), 31, 2, null);
+        ItemStack norestart = itemStackinit("不复活",new ArrayList<>(), 31, 2, null);
         inventory.setItem(6,norestart);
         return inventory;
     }
 
 
 
-    private static ItemStack itemStackinit(String Name, ArrayList<String> lore, int id, int childid,String NbtFubenName){
+    private static ItemStack itemStackinit(String Name, List<String> lore, int id, int childid,String NbtFubenName){
         ItemStack item = new ItemStack(id, 1, (short) childid);
         ItemMeta itemMeta = item.getItemMeta();
         itemMeta.setDisplayName(Name);
@@ -72,7 +71,7 @@ public class FubenMenu {
         }
         return item;
     }
-    private static ItemStack itemStackinitmoney(String Name, ArrayList<String> lore, int id, int childid,int NbtFubenmoney){
+    private static ItemStack itemStackinitmoney(String Name, List<String> lore, int id, int childid,int NbtFubenmoney){
         ItemStack item = new ItemStack(id, 1, (short) childid);
         ItemMeta itemMeta = item.getItemMeta();
         itemMeta.setDisplayName(Name);

@@ -4,6 +4,7 @@ import com.ipedg.minecraft.Fuben;
 import com.ipedg.minecraft.entity.FubenEntity;
 import com.ipedg.minecraft.entity.MenuEntity;
 import com.ipedg.minecraft.view.FubenMenu;
+import org.bukkit.Bukkit;
 
 import java.util.ArrayList;
 import java.util.Set;
@@ -13,6 +14,14 @@ public class FubenConfig {
     public static String RestartTitle;
     public static String LevellimitMsg;
     public static String NoMoneyMsg;
+    public static String AntiQuickClickMsg;
+    public static String NoItemMsg;
+    public static String DeathMsg;
+    public static String RestartOkMsg;
+    public static String DeathGoBackMsg;
+    public static String BossNameKey;
+    public static String GobackPickMsg;
+
 
     public static void ConfigLoad(){
         Fuben.fuben.clear();
@@ -41,10 +50,19 @@ public class FubenConfig {
             System.out.println(menuname);
             Fuben.menu.add(new MenuEntity(menuname,stringList,menu));
         }
-        GlobalRestartCd = Fuben.plugin.getConfig().getInt("GlobalRestartCd");
+        GlobalRestartCd = Fuben.plugin.getConfig().getInt("FubenConfig.GlobalRestartCd");
         RestartTitle = Fuben.plugin.getConfig().getString("RestartTitle");
         LevellimitMsg = Fuben.plugin.getConfig().getString("LevellimitMsg");
         NoMoneyMsg = Fuben.plugin.getConfig().getString("NoMoneyMsg");
+        AntiQuickClickMsg = Fuben.plugin.getConfig().getString("AntiQuickClickMsg");
+        NoItemMsg = Fuben.plugin.getConfig().getString("NoItemMsg");
+        DeathMsg = Fuben.plugin.getConfig().getString("DeathMsg");
+        RestartOkMsg = Fuben.plugin.getConfig().getString("RestartOkMsg");
+        DeathGoBackMsg =Fuben.plugin.getConfig().getString("DeathGoBackMsg");
+        BossNameKey = Fuben.plugin.getConfig().getString("FubenConfig.BossNameKey");
+        GobackPickMsg = Fuben.plugin.getConfig().getString("GobackPickMsg");
+        Fuben.completecmd = (ArrayList<String>) Fuben.plugin.getConfig().getStringList("FubenConfig.completecmd");
+        Fuben.mainworld = Bukkit.getWorld(Fuben.plugin.getConfig().getString("FubenConfig.MainWorld")).getSpawnLocation();
         FubenMenu.InitInventorymenu();
     }
 }

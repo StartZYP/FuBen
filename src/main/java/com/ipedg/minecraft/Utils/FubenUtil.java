@@ -56,12 +56,11 @@ public class FubenUtil {
     }
 
 
-    public static void GoFuben(String PlayerName,String FubenFileName){
-        Bukkit.getScheduler().runTask(Fuben.plugin,new FubenInitThread(PlayerName,FubenFileName));
+    public static void GoFuben(String PlayerName,String FubenFileName,String pffile){
+        Bukkit.getScheduler().runTask(Fuben.plugin,new FubenInitThread(PlayerName,FubenFileName,pffile));
     }
 
-    public static void GoBack(String PlayerName,String FubenFileName){
-        Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(),"mv tp "+PlayerName+" world");
-        Bukkit.getScheduler().runTask(Fuben.plugin,new DropFubenThread(FubenFileName));
+    public static void DeleteWorldFile(String FubenFileName){
+        Bukkit.getScheduler().runTaskLater(Fuben.plugin,new DropFubenThread(FubenFileName),20L);
     }
 }

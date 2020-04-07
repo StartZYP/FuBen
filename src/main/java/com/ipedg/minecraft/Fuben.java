@@ -7,7 +7,10 @@ import com.ipedg.minecraft.entity.FubenEntity;
 import com.ipedg.minecraft.entity.MenuEntity;
 import com.ipedg.minecraft.entity.PlayerEntity;
 import com.ipedg.minecraft.event.PlayerEevent;
+import com.ipedg.minecraft.worldmanger.DeathThread;
+import com.ipedg.minecraft.worldmanger.DropFubenThread;
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -26,7 +29,9 @@ public class Fuben extends JavaPlugin {
     public static ArrayList<MenuEntity> menu = new ArrayList<>();
     public static HashMap<String, Inventory> menuall = new HashMap<>();
     public static HashMap<String, PlayerEntity> fubenplayer = new HashMap<>();
-    public static String CHEACKKEY="Fuben";
+    public static ArrayList<String> completecmd = new ArrayList<>();
+    public static String CHEACKKEY="zyp";
+    public static Location mainworld;
     @Override
     public void onEnable() {
         plugin = this;
@@ -46,6 +51,7 @@ public class Fuben extends JavaPlugin {
         }else {
             System.out.println("[Fuben]Vault初始化失败");
         }
+        Bukkit.getScheduler().runTaskTimer(this,new DeathThread(),0,20L);
         super.onEnable();
     }
 
@@ -58,8 +64,6 @@ public class Fuben extends JavaPlugin {
             }else if (Fuben.menu.contains(new MenuEntity(args[0]))){
                 Player sender1 = (Player) sender;
                 sender1.openInventory(Fuben.menuall.get(args[0]));
-
-
             }
         }else if (args.length==2){
 
