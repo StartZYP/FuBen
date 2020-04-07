@@ -86,8 +86,10 @@ public class PlayerEevent implements Listener {
                 PlayerEntity playerEntity = Fuben.fubenplayer.get(whoClicked.getName());
                 if (VaultUtil.pay(whoClicked.getUniqueId(),playerEntity.getFuben().getFubenNeedMoney())){
                     playerEntity.setQuittime(0);
+                    playerEntity.setStatus(1);
                     whoClicked.sendMessage(FubenConfig.RestartOkMsg);
                     whoClicked.closeInventory();
+                    Fuben.fubenplayer.put(whoClicked.getName(),playerEntity);
                 }else {
                     whoClicked.teleport(Fuben.mainworld);
                 }
@@ -127,7 +129,7 @@ public class PlayerEevent implements Listener {
         if (event.getEntityType() == EntityType.PLAYER){
             Player entity = (Player) event.getEntity();
             if (entity.getWorld().getName().contains(Fuben.CHEACKKEY)){
-                //todo 加进复活CD队列
+                //todo 加进复活CD队
                 PlayerEntity playerEntity = Fuben.fubenplayer.get(entity.getName());
                 int restartCount = playerEntity.getNowRestartCount()+1;
                 if (restartCount>=playerEntity.getFuben().getRestartCount()){
@@ -142,6 +144,7 @@ public class PlayerEevent implements Listener {
                     playerEntity.setQuittime(new Date().getTime()/1000);
                     entity.sendMessage(FubenConfig.DeathMsg.replace("{Count}",String.valueOf(restartCount)));
                     playerEntity.setNowRestartCount(restartCount);
+                    playerEntity.setStatus(1);
                     Fuben.fubenplayer.put(entity.getName(),playerEntity);
                 }
             }
@@ -174,7 +177,7 @@ public class PlayerEevent implements Listener {
         if (player.getWorld().getName().contains(Fuben.CHEACKKEY)){
             String name = player.getName();
             PlayerEntity playerEntity = Fuben.fubenplayer.get(name);
-            if (playerEntity.getQuittime()!=0){
+            if (playerEntity.getStatus()!=1){
                 event.setCancelled(true);
             }
         }
