@@ -32,7 +32,7 @@ public class DeathThread implements Runnable {
                         Inventory inv = FubenMenu.CreateRestartInventory(restartMoney);
                         player.openInventory(inv);
                     }
-                }else {
+                }else if(playerEntity.getStatus()==2){
                     player.sendMessage(FubenConfig.GobackPickMsg);
                 }
             }

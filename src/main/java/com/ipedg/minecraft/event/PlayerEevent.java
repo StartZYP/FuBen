@@ -56,7 +56,7 @@ public class PlayerEevent implements Listener {
                 }
                 String GoFubenName = fubenEntity.getFubenWorldName()+Fuben.CHEACKKEY+p.getName().hashCode();
                 Fuben.fubenplayer.put(p.getName(),new PlayerEntity(p.getName(),fubenEntity,GoFubenName));
-                FubenUtil.GoFuben(p.getName(),GoFubenName,fubenEntity.getFubenWorldName());
+                FubenUtil.GoFuben(p.getName(),GoFubenName,fubenEntity.getFubenWorldName(),fubenEntity.getFubenName());
             }
         }
     }
@@ -118,6 +118,7 @@ public class PlayerEevent implements Listener {
                 for (Player player:entity.getWorld().getPlayers()){
                     PlayerEntity playerEntity = Fuben.fubenplayer.get(player.getName());
                     playerEntity.setQuittime(new Date().getTime()/1000);
+                    playerEntity.setStatus(2);
                     Fuben.fubenplayer.put(player.getName(),playerEntity);
                 }
             }
@@ -157,7 +158,8 @@ public class PlayerEevent implements Listener {
         if (event.getFrom().getName().contains(Fuben.CHEACKKEY)){
             PlayerEntity playerEntity = Fuben.fubenplayer.get(player.getName());
             FubenUtil.DeleteWorldFile(playerEntity.getWorldName());
-            player.sendMessage("离开副本");
+            player.sendMessage(FubenConfig.QuitFubenMsg);
+            player.closeInventory();
             Fuben.fubenplayer.remove(player.getName());
         }
     }
@@ -177,7 +179,7 @@ public class PlayerEevent implements Listener {
         if (player.getWorld().getName().contains(Fuben.CHEACKKEY)){
             String name = player.getName();
             PlayerEntity playerEntity = Fuben.fubenplayer.get(name);
-            if (playerEntity.getStatus()!=1){
+            if (playerEntity.getStatus()==1){
                 event.setCancelled(true);
             }
         }

@@ -21,9 +21,11 @@ public class FubenConfig {
     public static String DeathGoBackMsg;
     public static String BossNameKey;
     public static String GobackPickMsg;
+    public static String QuitFubenMsg;
 
 
     public static void ConfigLoad(){
+        Fuben.plugin.reloadConfig();
         Fuben.fuben.clear();
         Set<String> mines = Fuben.plugin.getConfig().getConfigurationSection("Fuben").getKeys(false);
         for (String temp:mines){
@@ -61,6 +63,7 @@ public class FubenConfig {
         DeathGoBackMsg =Fuben.plugin.getConfig().getString("DeathGoBackMsg");
         BossNameKey = Fuben.plugin.getConfig().getString("FubenConfig.BossNameKey");
         GobackPickMsg = Fuben.plugin.getConfig().getString("GobackPickMsg");
+        QuitFubenMsg = Fuben.plugin.getConfig().getString("QuitFubenMsg");
         Fuben.completecmd = (ArrayList<String>) Fuben.plugin.getConfig().getStringList("FubenConfig.completecmd");
         Fuben.mainworld = Bukkit.getWorld(Fuben.plugin.getConfig().getString("FubenConfig.MainWorld")).getSpawnLocation();
         FubenMenu.InitInventorymenu();

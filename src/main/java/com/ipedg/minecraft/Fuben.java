@@ -8,7 +8,7 @@ import com.ipedg.minecraft.entity.MenuEntity;
 import com.ipedg.minecraft.entity.PlayerEntity;
 import com.ipedg.minecraft.event.PlayerEevent;
 import com.ipedg.minecraft.worldmanger.DeathThread;
-import com.ipedg.minecraft.worldmanger.DropFubenThread;
+import com.onarandombox.MultiverseCore.MultiverseCore;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
@@ -17,6 +17,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scheduler.BukkitRunnable;
 
 
 import java.io.File;
@@ -30,6 +31,7 @@ public class Fuben extends JavaPlugin {
     public static HashMap<String, Inventory> menuall = new HashMap<>();
     public static HashMap<String, PlayerEntity> fubenplayer = new HashMap<>();
     public static ArrayList<String> completecmd = new ArrayList<>();
+    public static MultiverseCore multiversePlugin;
     public static String CHEACKKEY="zyp";
     public static Location mainworld;
     @Override
@@ -39,10 +41,16 @@ public class Fuben extends JavaPlugin {
         if (!config.exists()) {
             getConfig().options().copyDefaults(true);
         }
-        File FubenFile = new File("plugins/Fuben/FubenFile");
-        if (!FubenFile.exists()){
-            FubenFile.mkdir();
-        }
+        multiversePlugin = (com.onarandombox.MultiverseCore.MultiverseCore) Bukkit.getPluginManager().getPlugin("Multiverse-Core");
+        new BukkitRunnable(){
+            @Override
+            public void run() {
+                File FubenFile = new File(getDataFolder() + File.separator +"FubenFile");
+                if (!FubenFile.exists()){
+                    FubenFile.mkdir();
+                }
+            }
+        }.runTaskLater(this,20L);
         saveDefaultConfig();
         FubenConfig.ConfigLoad();
         Bukkit.getServer().getPluginManager().registerEvents(new PlayerEevent(),this);
@@ -65,8 +73,6 @@ public class Fuben extends JavaPlugin {
                 Player sender1 = (Player) sender;
                 sender1.openInventory(Fuben.menuall.get(args[0]));
             }
-        }else if (args.length==2){
-
         }
         return super.onCommand(sender, command, label, args);
     }

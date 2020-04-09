@@ -15,8 +15,8 @@ public class DropFubenThread implements Runnable {
     }
     @Override
     public void run() {
-        Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(),"mv unload "+FubenName);
-        Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(),"mv remove "+FubenName);
+        Fuben.multiversePlugin.getMVWorldManager().unloadWorld(FubenName);
+        Fuben.multiversePlugin.getMVWorldManager().removeWorldFromConfig(FubenName);
         File wordfile = new File(Fuben.plugin.getDataFolder().getAbsoluteFile().getParentFile().getParentFile().getAbsolutePath()+File.separator+"world"+File.separator+FubenName);
         FubenUtil.deleteDirectory(wordfile);
     }
