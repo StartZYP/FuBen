@@ -10,6 +10,7 @@ public class FubenEntity {
     private int FubenItemid;
     private int FubenChildId;
     private ArrayList<String> Lores;
+    private ArrayList<String> anticmd;
     private int FubenNeedMoney;
     private String NeedItemLore;
     private int MaxLevel;
@@ -140,12 +141,21 @@ public class FubenEntity {
         RestartCount = restartCount;
     }
 
-    public FubenEntity(String fubenWorldName, String fubenName, int fubenItemid, int fubenChildId, ArrayList<String> lores, int fubenNeedMoney, String needItemLore, int maxLevel, int minLevel, int restartMoney, int restartCount) {
+    public ArrayList<String> getAnticmd() {
+        return anticmd;
+    }
+
+    public void setAnticmd(ArrayList<String> anticmd) {
+        this.anticmd = anticmd;
+    }
+
+    public FubenEntity(String fubenWorldName, String fubenName, int fubenItemid, int fubenChildId, ArrayList<String> lores, ArrayList<String> anticmd, int fubenNeedMoney, String needItemLore, int maxLevel, int minLevel, int restartMoney, int restartCount) {
         FubenWorldName = fubenWorldName;
         FubenName = fubenName;
         FubenItemid = fubenItemid;
         FubenChildId = fubenChildId;
         Lores = lores;
+        this.anticmd = anticmd;
         FubenNeedMoney = fubenNeedMoney;
         NeedItemLore = needItemLore;
         MaxLevel = maxLevel;

@@ -22,6 +22,7 @@ public class FubenConfig {
     public static String BossNameKey;
     public static String GobackPickMsg;
     public static String QuitFubenMsg;
+    public static String AntiCmdMsg;
 
 
     public static void ConfigLoad(){
@@ -33,13 +34,14 @@ public class FubenConfig {
             int Itemid = Fuben.plugin.getConfig().getInt("Fuben."+temp+".Itemid");
             int FubenChildId = Fuben.plugin.getConfig().getInt("Fuben."+temp+".Child");
             ArrayList<String> Lores = (ArrayList<String>) Fuben.plugin.getConfig().getStringList("Fuben."+temp+".Lores");
+            ArrayList<String> anticmd = (ArrayList<String>) Fuben.plugin.getConfig().getStringList("Fuben."+temp+".anticmd");
             int NeedMoney = Fuben.plugin.getConfig().getInt("Fuben."+temp+".NeedMoney");
             String NeedItemLore = Fuben.plugin.getConfig().getString("Fuben."+temp+".NeedItemLore");
             int MaxLevel = Fuben.plugin.getConfig().getInt("Fuben."+temp+".MaxLevel");
             int MinLevel = Fuben.plugin.getConfig().getInt("Fuben."+temp+".MinLevel");
             int RestartMoney = Fuben.plugin.getConfig().getInt("Fuben."+temp+".RestartMoney");
             int RestartCount = Fuben.plugin.getConfig().getInt("Fuben."+temp+".RestartCount");
-            FubenEntity fubenEntity = new FubenEntity(temp, FubenName, Itemid, FubenChildId, Lores, NeedMoney, NeedItemLore, MaxLevel, MinLevel, RestartMoney, RestartCount);
+            FubenEntity fubenEntity = new FubenEntity(temp, FubenName, Itemid, FubenChildId, Lores,anticmd, NeedMoney, NeedItemLore, MaxLevel, MinLevel, RestartMoney, RestartCount);
             System.out.println(fubenEntity);
             Fuben.fuben.add(fubenEntity);
         }
@@ -64,6 +66,7 @@ public class FubenConfig {
         BossNameKey = Fuben.plugin.getConfig().getString("FubenConfig.BossNameKey");
         GobackPickMsg = Fuben.plugin.getConfig().getString("GobackPickMsg");
         QuitFubenMsg = Fuben.plugin.getConfig().getString("QuitFubenMsg");
+        AntiCmdMsg = Fuben.plugin.getConfig().getString("AntiCmdMsg");
         Fuben.completecmd = (ArrayList<String>) Fuben.plugin.getConfig().getStringList("FubenConfig.completecmd");
         Fuben.mainworld = Bukkit.getWorld(Fuben.plugin.getConfig().getString("FubenConfig.MainWorld")).getSpawnLocation();
         FubenMenu.InitInventorymenu();

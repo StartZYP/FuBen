@@ -18,6 +18,7 @@ import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryDragEvent;
 import org.bukkit.event.player.PlayerChangedWorldEvent;
+import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.inventory.Inventory;
@@ -25,10 +26,28 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 
 public class PlayerEevent implements Listener {
+
+    @EventHandler
+    public void PlayerDoCmd(PlayerCommandPreprocessEvent event){
+        Player player = event.getPlayer();
+        String name = player.getWorld().getName();
+        if (name.contains(Fuben.CHEACKKEY)){
+            FubenEntity fuben = Fuben.fubenplayer.get(player.getName()).getFuben();
+            ArrayList<String> anticmd = fuben.getAnticmd();
+            for (String cmd:anticmd){
+                if (event.getMessage().contains(cmd)){
+                    player.sendMessage(FubenConfig.AntiCmdMsg);
+                    event.setCancelled(true);
+                    return;
+                }
+            }
+        }
+    }
 
 
     @EventHandler

@@ -12,6 +12,10 @@ Fuben:
       - "§2§l- 重生上限:3"
       - "§3§l- 最大等级:50"
       - "§3§l- 最小等级:40"
+    anticmd:
+      - "tpa"
+      - "spawn"
+      - "accept"
     NeedMoney: 500
     NeedItemLore: "南门"
     MaxLevel: 50
@@ -30,6 +34,10 @@ Fuben:
       - "§2§l- 重生上限:无限"
       - "§3§l- 最大等级:10"
       - "§3§l- 最小等级:0"
+    anticmd:
+      - "tpa"
+      - "spawn"
+      - "accept"
     NeedMoney: 0
     NeedItemLore: ""
     MaxLevel: 10
@@ -44,6 +52,10 @@ Fuben:
       - "彩虹山副本"
       - "asdweqd"
       - "fuck"
+    anticmd:
+      - "tpa"
+      - "spawn"
+      - "accept"
     NeedMoney: 5000
     NeedItemLore: "深渊门票1"
     MaxLevel: 50
@@ -58,6 +70,10 @@ Fuben:
       - "gaga"
       - "asdweqd"
       - "fuck"
+    anticmd:
+      - "tpa"
+      - "spawn"
+      - "accept"
     NeedMoney: 5000
     NeedItemLore: "深渊门票1"
     MaxLevel: 50
@@ -93,3 +109,4 @@ RestartOkMsg: "§c§l氪金复活成功"
 DeathGoBackMsg: "§e§c死亡次数耗尽，滚回主世界"
 GobackPickMsg: "§e§l赶快捡东西，你有十秒钟的时间"
 QuitFubenMsg: "你滚出副本了"
+AntiCmdMsg: "副本不让输入这个命令哦"
