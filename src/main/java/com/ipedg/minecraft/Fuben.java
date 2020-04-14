@@ -65,8 +65,8 @@ public class Fuben extends JavaPlugin {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (args.length==1&&sender.isOp()){
-            if (args[0].equalsIgnoreCase("reload")){
+        if (args.length==1){
+            if (args[0].equalsIgnoreCase("reload")&&sender.isOp()){
                 FubenConfig.ConfigLoad();
                 sender.sendMessage("§e§l插件重载成功");
             }else if (Fuben.menu.contains(new MenuEntity(args[0]))){

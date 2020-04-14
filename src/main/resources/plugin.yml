@@ -5,5 +5,4 @@ depend: [Vault,Multiverse-Core]
 commands:
   fuben:
     description: Main command for fuben.
-    usage: /<command> (用法不对)
     aliases: [fb]
