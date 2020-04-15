@@ -22,6 +22,10 @@ Fuben:
     MinLevel: 40
     RestartMoney: 5000
     RestartCount: 3
+    SpawnLocation:
+      x: 100
+      y: 100
+      z: 100
   Fuben2:
     Itemid: 31
     Child: 2
@@ -44,6 +48,10 @@ Fuben:
     MinLevel: 0
     RestartMoney: 5000
     RestartCount: 3
+    SpawnLocation:
+      x: 100
+      y: 100
+      z: 100
   Fuben3:
     Itemid: 31
     Child: 2
@@ -62,6 +70,10 @@ Fuben:
     MinLevel: 20
     RestartMoney: 5000
     RestartCount: 3
+    SpawnLocation:
+      x: 100
+      y: 100
+      z: 100
   Fuben4:
     Itemid: 28
     Child: 0
@@ -80,6 +92,10 @@ Fuben:
     MinLevel: 20
     RestartMoney: 5000
     RestartCount: 3
+    SpawnLocation:
+      x: 100
+      y: 100
+      z: 100
 FubenMenu:
   CaiDan1:
     Name: "§e§l异步活动世界"

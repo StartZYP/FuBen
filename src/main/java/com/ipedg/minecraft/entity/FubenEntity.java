@@ -1,7 +1,6 @@
 package com.ipedg.minecraft.entity;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class FubenEntity {
 
@@ -17,6 +16,9 @@ public class FubenEntity {
     private int MinLevel;
     private int RestartMoney;
     private int RestartCount;
+    private int x;
+    private int y;
+    private int z;
 
 
     public FubenEntity(String fubenWorldName) {
@@ -51,6 +53,30 @@ public class FubenEntity {
                 ", RestartMoney=" + RestartMoney +
                 ", RestartCount=" + RestartCount +
                 '}';
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
+    public int getZ() {
+        return z;
+    }
+
+    public void setZ(int z) {
+        this.z = z;
     }
 
     public String getFubenWorldName() {
@@ -149,7 +175,9 @@ public class FubenEntity {
         this.anticmd = anticmd;
     }
 
-    public FubenEntity(String fubenWorldName, String fubenName, int fubenItemid, int fubenChildId, ArrayList<String> lores, ArrayList<String> anticmd, int fubenNeedMoney, String needItemLore, int maxLevel, int minLevel, int restartMoney, int restartCount) {
+
+
+    public FubenEntity(String fubenWorldName, String fubenName, int fubenItemid, int fubenChildId, ArrayList<String> lores, ArrayList<String> anticmd, int fubenNeedMoney, String needItemLore, int maxLevel, int minLevel, int restartMoney, int restartCount, int x, int y, int z) {
         FubenWorldName = fubenWorldName;
         FubenName = fubenName;
         FubenItemid = fubenItemid;
@@ -162,5 +190,8 @@ public class FubenEntity {
         MinLevel = minLevel;
         RestartMoney = restartMoney;
         RestartCount = restartCount;
+        this.x = x;
+        this.y = y;
+        this.z = z;
     }
 }

@@ -2,10 +2,9 @@ package com.ipedg.minecraft.worldmanger;
 
 import com.ipedg.minecraft.Fuben;
 import com.ipedg.minecraft.Utils.FubenUtil;
-import org.bukkit.Bukkit;
-
 
 import java.io.File;
+
 
 public class DropFubenThread implements Runnable {
 
@@ -15,7 +14,6 @@ public class DropFubenThread implements Runnable {
     }
     @Override
     public void run() {
-        Fuben.multiversePlugin.getMVWorldManager().unloadWorld(FubenName);
         Fuben.multiversePlugin.getMVWorldManager().removeWorldFromConfig(FubenName);
         File wordfile = new File(Fuben.plugin.getDataFolder().getAbsoluteFile().getParentFile().getParentFile().getAbsolutePath()+File.separator+"world"+File.separator+FubenName);
         FubenUtil.deleteDirectory(wordfile);

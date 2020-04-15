@@ -5,6 +5,8 @@ import com.ipedg.minecraft.Fuben;
 import com.ipedg.minecraft.worldmanger.DropFubenThread;
 import com.ipedg.minecraft.worldmanger.FubenInitThread;
 import org.bukkit.Bukkit;
+import org.bukkit.WorldCreator;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import java.io.File;
 import java.io.IOException;
@@ -55,8 +57,27 @@ public class FubenUtil {
         return PlayerLevel<MaxLevel&&PlayerLevel>=MinLevel;
     }
 
+    public static boolean deleteFile(File dirFile) {
+        if (!dirFile.exists()) {
+            return false;
+        }
+
+        if (dirFile.isFile()) {
+            return dirFile.delete();
+        } else {
+
+            for (File file : dirFile.listFiles()) {
+                deleteFile(file);
+            }
+        }
+
+        return dirFile.delete();
+    }
+
+
 
     public static void GoFuben(String PlayerName,String FubenFileName,String pffile,String aliasname){
+
         Bukkit.getScheduler().runTask(Fuben.plugin,new FubenInitThread(PlayerName,FubenFileName,pffile,aliasname));
     }
 

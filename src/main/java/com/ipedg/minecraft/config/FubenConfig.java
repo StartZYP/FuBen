@@ -41,7 +41,10 @@ public class FubenConfig {
             int MinLevel = Fuben.plugin.getConfig().getInt("Fuben."+temp+".MinLevel");
             int RestartMoney = Fuben.plugin.getConfig().getInt("Fuben."+temp+".RestartMoney");
             int RestartCount = Fuben.plugin.getConfig().getInt("Fuben."+temp+".RestartCount");
-            FubenEntity fubenEntity = new FubenEntity(temp, FubenName, Itemid, FubenChildId, Lores,anticmd, NeedMoney, NeedItemLore, MaxLevel, MinLevel, RestartMoney, RestartCount);
+            int x = Fuben.plugin.getConfig().getInt("Fuben."+temp+".SpawnLocation.x");
+            int y = Fuben.plugin.getConfig().getInt("Fuben."+temp+".SpawnLocation.y");
+            int z = Fuben.plugin.getConfig().getInt("Fuben."+temp+".SpawnLocation.z");
+            FubenEntity fubenEntity = new FubenEntity(temp, FubenName, Itemid, FubenChildId, Lores,anticmd, NeedMoney, NeedItemLore, MaxLevel, MinLevel, RestartMoney, RestartCount,x,y,z);
             System.out.println(fubenEntity);
             Fuben.fuben.add(fubenEntity);
         }
@@ -67,6 +70,7 @@ public class FubenConfig {
         GobackPickMsg = Fuben.plugin.getConfig().getString("GobackPickMsg");
         QuitFubenMsg = Fuben.plugin.getConfig().getString("QuitFubenMsg");
         AntiCmdMsg = Fuben.plugin.getConfig().getString("AntiCmdMsg");
+
         Fuben.completecmd = (ArrayList<String>) Fuben.plugin.getConfig().getStringList("FubenConfig.completecmd");
         Fuben.mainworld = Bukkit.getWorld(Fuben.plugin.getConfig().getString("FubenConfig.MainWorld")).getSpawnLocation();
         FubenMenu.InitInventorymenu();

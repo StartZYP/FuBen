@@ -46,9 +46,10 @@ public class PlayerEevent implements Listener {
             }
         }
     }
+
     @EventHandler
     public void PlayerBreakBlock(BlockBreakEvent event){
-        String name = event.getPlayer().getName();
+        String name = event.getPlayer().getWorld().getName();
         if (name.contains(Fuben.CHEACKKEY)){
             event.setCancelled(true);
         }
@@ -78,7 +79,7 @@ public class PlayerEevent implements Listener {
                 if (!CheackEnterFueb(p,fubenEntity)){
                     return;
                 }
-                String GoFubenName = fubenEntity.getFubenWorldName()+Fuben.CHEACKKEY+p.getName().hashCode();
+                String GoFubenName = fubenEntity.getFubenWorldName()+Fuben.CHEACKKEY+(new Date().getTime()/1000);
                 Fuben.fubenplayer.put(p.getName(),new PlayerEntity(p.getName(),fubenEntity,GoFubenName));
                 FubenUtil.GoFuben(p.getName(),GoFubenName,fubenEntity.getFubenWorldName(),fubenEntity.getFubenName());
             }
@@ -110,7 +111,7 @@ public class PlayerEevent implements Listener {
                 PlayerEntity playerEntity = Fuben.fubenplayer.get(whoClicked.getName());
                 if (VaultUtil.pay(whoClicked.getUniqueId(),playerEntity.getFuben().getFubenNeedMoney())){
                     playerEntity.setQuittime(0);
-                    playerEntity.setStatus(1);
+                    playerEntity.setStatus(0);
                     whoClicked.sendMessage(FubenConfig.RestartOkMsg);
                     whoClicked.closeInventory();
                     Fuben.fubenplayer.put(whoClicked.getName(),playerEntity);
