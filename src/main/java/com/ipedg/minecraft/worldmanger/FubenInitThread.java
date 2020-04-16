@@ -33,19 +33,20 @@ public class FubenInitThread implements Runnable {
         Fuben.multiversePlugin.getMVWorldManager().addWorld(FubenName,environment,null,WorldType.FLAT,null,"",true);
         Fuben.multiversePlugin.getMVWorldManager().unloadWorld(FubenName);
         File deletefile = new File(Fuben.plugin.getDataFolder().getAbsoluteFile().getParentFile().getParentFile().getAbsolutePath()+File.separator+"world"+File.separator+FubenName+File.separator+"region");
-        System.out.println(deletefile.getAbsolutePath());
         FubenUtil.deleteFile(deletefile);
         File wordfile = new File(Fuben.plugin.getDataFolder().getAbsoluteFile().getParentFile().getParentFile().getAbsolutePath()+File.separator+"world"+File.separator+FubenName+File.separator+"region");
         File fubenFILE = new File(Fuben.plugin.getDataFolder().getAbsolutePath()+File.separator+"FubenFile"+File.separator+pffile+File.separator+"region");
         FubenUtil.copyFolder(fubenFILE,wordfile);
+        Fuben.multiversePlugin.getMVWorldManager().loadWorld(FubenName);
         World cbWorld = Fuben.multiversePlugin.getMVWorldManager().getMVWorld(FubenName).getCBWorld();
+        FubenEntity fuben = Fuben.fubenplayer.get(playerName).getFuben();
         Fuben.multiversePlugin.getMVWorldManager().getMVWorld(FubenName).setAllowAnimalSpawn(false);
         Fuben.multiversePlugin.getMVWorldManager().getMVWorld(FubenName).setEnableWeather(false);
         Fuben.multiversePlugin.getMVWorldManager().getMVWorld(FubenName).setAllowMonsterSpawn(false);
         Fuben.multiversePlugin.getMVWorldManager().getMVWorld(FubenName).setAlias(aliasname);
         Fuben.multiversePlugin.getMVWorldManager().getMVWorld(FubenName).setDifficulty(Difficulty.PEACEFUL);
-        FubenEntity fuben = Fuben.fubenplayer.get(playerName).getFuben();
-        Fuben.multiversePlugin.getMVWorldManager().loadWorld(FubenName);
+        cbWorld.setGameRuleValue("keepInventory","true");
+        Fuben.multiversePlugin.getMVWorldManager().getMVWorld(FubenName).setSpawnLocation(new Location(cbWorld,fuben.getX(),fuben.getY(),fuben.getZ()) );
         Bukkit.getServer().getPlayer(playerName).teleport(new Location(cbWorld,fuben.getX(),fuben.getY(),fuben.getZ()));
     }
 }

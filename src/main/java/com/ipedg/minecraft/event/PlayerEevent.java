@@ -7,6 +7,7 @@ import com.ipedg.minecraft.economy.VaultUtil;
 import com.ipedg.minecraft.entity.FubenEntity;
 import com.ipedg.minecraft.entity.PlayerEntity;
 import net.minecraft.server.v1_7_R4.NBTTagCompound;
+import net.minecraftforge.event.entity.player.PlayerDropsEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.craftbukkit.v1_7_R4.entity.CraftEntity;
 import org.bukkit.craftbukkit.v1_7_R4.inventory.CraftItemStack;
@@ -16,6 +17,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
+import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryDragEvent;
 import org.bukkit.event.player.*;
@@ -150,6 +152,12 @@ public class PlayerEevent implements Listener {
         }
     }
 
+
+    @EventHandler
+    public void PlayerDath(PlayerDeathEvent event){
+        
+    }
+
     @EventHandler
     public void PlayerDeath(EntityDeathEvent event){
         if (event.getEntityType() == EntityType.PLAYER){
@@ -177,13 +185,9 @@ public class PlayerEevent implements Listener {
         }
     }
 
-    @EventHandler
-    public void PlayerDropItem(PlayerDropItemEvent event){
-        String name = event.getPlayer().getWorld().getName();
-        if (name.contains(Fuben.CHEACKKEY)){
-            event.setCancelled(true);
-        }
-    }
+
+
+
 
     @EventHandler
     public void PlayerChangeWorld(PlayerChangedWorldEvent event){
