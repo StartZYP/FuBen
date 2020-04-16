@@ -178,6 +178,14 @@ public class PlayerEevent implements Listener {
     }
 
     @EventHandler
+    public void PlayerDropItem(PlayerDropItemEvent event){
+        String name = event.getPlayer().getWorld().getName();
+        if (name.contains(Fuben.CHEACKKEY)){
+            event.setCancelled(true);
+        }
+    }
+
+    @EventHandler
     public void PlayerChangeWorld(PlayerChangedWorldEvent event){
         Player player = event.getPlayer();
         if (event.getFrom().getName().contains(Fuben.CHEACKKEY)){

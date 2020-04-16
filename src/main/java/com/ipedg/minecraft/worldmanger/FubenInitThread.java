@@ -43,6 +43,7 @@ public class FubenInitThread implements Runnable {
         Fuben.multiversePlugin.getMVWorldManager().getMVWorld(FubenName).setEnableWeather(false);
         Fuben.multiversePlugin.getMVWorldManager().getMVWorld(FubenName).setAllowMonsterSpawn(false);
         Fuben.multiversePlugin.getMVWorldManager().getMVWorld(FubenName).setAlias(aliasname);
+        Fuben.multiversePlugin.getMVWorldManager().getMVWorld(FubenName).setDifficulty(Difficulty.PEACEFUL);
         FubenEntity fuben = Fuben.fubenplayer.get(playerName).getFuben();
         Fuben.multiversePlugin.getMVWorldManager().loadWorld(FubenName);
         Bukkit.getServer().getPlayer(playerName).teleport(new Location(cbWorld,fuben.getX(),fuben.getY(),fuben.getZ()));
