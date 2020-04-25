@@ -90,11 +90,7 @@ public class PlayerEevent implements Listener {
     @EventHandler
     public void InventoryFuebnMenuDragEvent(InventoryDragEvent event){
         Inventory inventory = event.getInventory();
-        ItemStack item = inventory.getItem(10);
-        if (!item.hasItemMeta()){
-            return;
-        }
-        if (ItemGetNbtTagKey(item)!=null){
+        if (inventory.getTitle().contains(Fuben.CHEACKKEY)){
             event.setCancelled(true);
         }
     }
